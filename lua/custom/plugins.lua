@@ -7,4 +7,9 @@ return {
   {
     'ms-jpq/chadtree'
   },
+
+  -- Copilot
+  {
+    'github/copilot.vim'
+  }
 }
