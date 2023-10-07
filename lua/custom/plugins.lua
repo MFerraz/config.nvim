@@ -11,5 +11,10 @@ return {
   -- Copilot
   {
     'github/copilot.vim'
-  }
+  },
+
+  -- Leap
+  {
+    'ggandor/leap.nvim'
+  },
 }
