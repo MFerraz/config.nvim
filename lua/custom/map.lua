@@ -13,6 +13,13 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Buffers
+require('which-key').register({
+  ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
+})
+vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = '[B]uffer [D]etach' })
+vim.keymap.set("n", "<leader>bn", ":bn<CR>", { desc = '[B]uffer [N]ext' })
+
 -- Leap
 require('leap').add_default_mappings()
 
