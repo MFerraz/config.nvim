@@ -15,3 +15,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Leap
 require('leap').add_default_mappings()
+
+-- Files
+vim.keymap.set('n', '<leader>v', ':Neotree<CR>', { desc = '[V] Open tree explorer' })
+
+-- Git
+vim.keymap.set('n', '<leader>gs', ':Neotree git_status<CR>', { desc = '[G]it [S]tatus on file explorer' })
+vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = '[G]it [L]og' })
