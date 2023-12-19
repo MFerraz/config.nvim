@@ -517,3 +517,6 @@ cmp.setup {
 
 require("custom.map")
 require("custom.set")
+
+-- Setup custom plugins
+require("oil").setup()

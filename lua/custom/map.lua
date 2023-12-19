@@ -49,3 +49,6 @@ vim.keymap.set('n', '<leader>v', ':Neotree<CR>', { desc = '[V] Open tree explore
 -- Git
 vim.keymap.set('n', '<leader>gs', ':Neotree git_status<CR>', { desc = '[G]it [S]tatus on file explorer' })
 vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = '[G]it [L]og' })
+
+-- Oil
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory as buffer' })

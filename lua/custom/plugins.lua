@@ -11,6 +11,8 @@ return {
 
   -- Motion and QoL
   'ggandor/leap.nvim',
+
+  -- Files
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -34,6 +36,7 @@ return {
       })
     end
   },
+  'stevearc/oil.nvim',
 
   {
     "iamcco/markdown-preview.nvim",
