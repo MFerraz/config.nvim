@@ -34,21 +34,28 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = '[J] Previous loca
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Buffers
-require('which-key').register({
-  ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
+require('which-key').add({
+  { '<leader>b', group = '[B]uffer' },
+  { '<leader>b_', hidden = true },
 })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = '[B]uffer [D]etach' })
 vim.keymap.set("n", "<leader>bn", ":bn<CR>", { desc = '[B]uffer [N]ext' })
-
--- Leap
-require('leap').add_default_mappings()
 
 -- Files
 vim.keymap.set('n', '<leader>v', ':Neotree<CR>', { desc = '[V] Open tree explorer' })
 
 -- Git
+require('which-key').add({
+  { '<leader>g', group = '[G]it' },
+  { '<leader>g_', hidden = true },
+  { '<leader>gc', group = '[G]it [C]onflict' },
+  { '<leader>gc_', hidden = true },
+})
 vim.keymap.set('n', '<leader>gs', ':Neotree git_status<CR>', { desc = '[G]it [S]tatus on file explorer' })
 vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = '[G]it [L]og' })
+vim.keymap.set('n', '<leader>gco', ':GitConflictChooseOurs<CR>:GitConflictNextConflict<CR>', { desc = '[G]it [C]onflict Choose [O]urs' })
+vim.keymap.set('n', '<leader>gct', ':GitConflictChooseTheirs<CR>:GitConflictNextConflict<CR>', { desc = '[G]it [C]onflict Choose [T]heirs' })
+vim.keymap.set('n', '<leader>gcq', ':GitConflictListQf<CR>', { desc = '[G]it [C]onflict [Q]uickfix' })
 
 -- Oil
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory as buffer' })
