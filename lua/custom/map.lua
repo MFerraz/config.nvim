@@ -53,9 +53,9 @@ require('which-key').add({
 })
 vim.keymap.set('n', '<leader>gs', ':Neotree git_status<CR>', { desc = '[G]it [S]tatus on file explorer' })
 vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = '[G]it [L]og' })
-vim.keymap.set('n', '<leader>gco', ':GitConflictChooseOurs<CR>:GitConflictNextConflict<CR>', { desc = '[G]it [C]onflict Choose [O]urs' })
-vim.keymap.set('n', '<leader>gct', ':GitConflictChooseTheirs<CR>:GitConflictNextConflict<CR>', { desc = '[G]it [C]onflict Choose [T]heirs' })
-vim.keymap.set('n', '<leader>gcq', ':GitConflictListQf<CR>', { desc = '[G]it [C]onflict [Q]uickfix' })
+vim.keymap.set('n', '<leader>gco', ':GitConflictChooseOurs<CR>:GitConflictNextConflict<CR>zz', { desc = 'Choose [O]urs' })
+vim.keymap.set('n', '<leader>gct', ':GitConflictChooseTheirs<CR>:GitConflictNextConflict<CR>zz', { desc = 'Choose [T]heirs' })
+vim.keymap.set('n', '<leader>gcq', ':GitConflictListQf<CR>', { desc = 'List in [Q]uickfix' })
 
 -- Oil
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory as buffer' })
