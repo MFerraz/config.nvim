@@ -7,10 +7,7 @@ vim.opt.autoindent = true
 
 -- Set colorscheme
 vim.o.background = "dark"
+vim.cmd.colorscheme("gruvbox")
 
 -- Make numbers relative
 vim.wo.rnu = true
-
--- Theme
-vim.cmd('let ayucolor="dark"')
-vim.cmd('colorscheme ayu')
