@@ -2,7 +2,10 @@
 -- This file serves as the entry point for all plugin configurations
 
 return {
+  -- AI plugins
+
   -- Core plugins (essential functionality)
+  require('plugins.core.lazydev'),
   require('plugins.core.lsp'),
   require('plugins.core.completion'),
   require('plugins.core.treesitter'),
