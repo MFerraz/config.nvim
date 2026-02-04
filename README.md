@@ -1,163 +1,289 @@
-# kickstart.nvim
+# Neovim Configuration
 
-https://github.com/kdheepak/kickstart.nvim/assets/1813121/f3ff9a2b-c31f-44df-a4fa-8a0d7b17cf7b
+A modern, modular Neovim configuration built on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) with extensions for AI-assisted development, comprehensive git integration, and professional language server support.
 
-### Introduction
+## Overview
 
-A starting point for Neovim that is:
+This is a production-ready configuration designed for developers who want:
+- **Modern development tools**: LSP, Treesitter, fuzzy finding
+- **AI assistance**: Integrated sidekick.nvim for AI-powered workflows
+- **Git-first workflow**: Full git integration with visual feedback
+- **Minimal bloat**: Only essential plugins, optional features can be toggled
+- **Mnemonic keybindings**: Organized, discoverable shortcuts with which-key
 
-* Small
-* Single-file (with examples of moving to multi-file)
-* Documented
-* Modular
+## Quick Start
 
-This repo is meant to be used by **YOU** to begin your Neovim journey; remove the things you don't use and add what you miss.
+### Requirements
 
-Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest ['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim. If you are experiencing issues, please make sure you have the latest versions.
-
-Distribution Alternatives:
-- [LazyVim](https://www.lazyvim.org/): A delightful distribution maintained by @folke (the author of lazy.nvim, the package manager used here)
+- **Neovim** 0.9+ (latest stable/nightly recommended)
+- **ripgrep**: Required for Telescope search
+  ```sh
+  # macOS
+  brew install ripgrep
+  # or use your system package manager
+  ```
 
 ### Installation
 
-> **NOTE** 
-> [Backup](#FAQ) your previous configuration (if any exists)
-
-Requirements:
-* Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
-  * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) is required for multiple [telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) pickers.
-* See [Windows Installation](#Windows-Installation) if you have trouble with `telescope-fzf-native`
-
-Neovim's configurations are located under the following paths, depending on your OS:
-
-| OS | PATH |
-| :- | :--- |
-| Linux | `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim` |
-| MacOS | `$XDG_CONFIG_HOME/nvim`, '~/.config/nvim` |
-| Windows | `%userprofile%\AppData\Local\nvim\` |
-
-Clone kickstart.nvim:
+Clone this repository:
 
 ```sh
-# on Linux and Mac
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone <your-repo-url> ~/.config/nvim
+cd ~/.config/nvim
 ```
 
+Start Neovim and plugins will auto-install:
 
+```sh
+nvim
 ```
-# on Windows
-git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\ 
-```
 
-### Post Installation
-
-Run the following command and then **you are ready to go**!
+Or manually sync plugins:
 
 ```sh
 nvim --headless "+Lazy! sync" +qa
 ```
 
-### Recommended Steps
+## Features & Organization
 
-[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo (so that you have your own copy that you can modify) and then installing you can install to your machine using the methods above.
+### Core Development Features
 
-> **NOTE**  
-> Your fork's url will be something like this: `https://github.com/<your_github_username>/kickstart.nvim.git`
+**Language Server Protocol (LSP)**
+- Auto-completion with `nvim-cmp`
+- Go to definition, references, rename, code actions
+- Diagnostic floating windows with navigation
+- Pre-configured for Lua, Go, Python, Rust, TypeScript, C/C++
 
-### Configuration And Extension
+**Fuzzy Finding & Search**
+- `<leader>sf` - Find files
+- `<leader>sg` - Live grep search
+- `<leader>/` - Search in current buffer
+- `<leader><space>` - Search open buffers
+- Uses native FZF for speed
 
-* Inside of your copy, feel free to modify any file you like! It's your copy!
-* Feel free to change any of the default options in `init.lua` to better suit your needs.
-* For adding plugins, there are 3 primary options:
-  * Add new configuration in `lua/custom/plugins/*` files, which will be auto sourced using `lazy.nvim` (uncomment the line importing the `custom/plugins` directory in the `init.lua` file to enable this)
-  * Modify `init.lua` with additional plugins.
-  * Include the `lua/kickstart/plugins/*` files in your configuration.
+**Syntax Highlighting & Code Navigation**
+- Treesitter for modern syntax highlighting
+- Text objects for functions, classes, parameters
+- Smart indentation guides via snacks.nvim
 
-You can also merge updates/changes from the repo back into your fork, to keep up-to-date with any changes for the default configuration.
+### Git Workflow
 
-#### Example: Adding an autopairs plugin
+Comprehensive git integration with visual feedback:
 
-In the file: `lua/custom/plugins/autopairs.lua`, add:
+**Navigation & Status** (`<leader>g`)
+- `<leader>gs` - Open git file explorer
+- `<leader>gl` - Browse git log history
+- Git change indicators in the gutter (added/modified/deleted lines)
+
+**Merge Conflicts** (`<leader>gc`)
+- `<leader>gco` - Choose our version
+- `<leader>gct` - Choose their version
+- `<leader>gcq` - View all conflicts in quickfix
+
+**Full Git Commands**
+- Access via `:Git` (vim-fugitive)
+- Staging, committing, branching, and more
+
+### AI Integration
+
+**Sidekick.nvim** - AI Assistant
+- TMux backend enabled for multiple AI sessions
+- Spawns isolated AI windows for focused work
+- Integrates with development workflow
+
+### UI & Appearance
+
+**Gruvbox Theme**
+- Warm, retro colorscheme with excellent readability
+- Optimized for terminal and GUI usage
+
+**Status Line & UI**
+- Lualine status bar with file info, git branch, and diagnostics
+- Which-key helper showing available keybindings
+- File icons for better visual navigation
+- Enhanced notifications and input dialogs
+
+### File Management
+
+**Oil.nvim** - Directory as Buffer
+- Open parent directory with `-`
+- Edit directories like buffers
+- Shows git status and file details
+- More powerful than traditional file trees
+
+### Commenting
+
+**Comment.nvim**
+- `gcc` - Toggle comment on line
+- `gc` + motion - Toggle comment on selection
+- Smart comment handling for all languages
+
+## Keyboard Shortcuts
+
+### Leader Key: `<Space>`
+
+**Search** (`<leader>s`)
+- `/` - Fuzzy search current buffer
+- `f` - Find files
+- `g` - Live grep
+- `h` - Search help
+- `w` - Search word under cursor
+- `d` - Search diagnostics
+- `?` - Recent files
+- `<space>` - Open buffers
+
+**LSP** (Smart context-aware)
+- `gd` - Go to definition
+- `gr` - Find references
+- `gI` - Go to implementation
+- `<leader>D` - Type definition
+- `<leader>rn` - Rename symbol
+- `<leader>ca` - Code actions
+- `K` - Hover documentation
+
+**Git** (`<leader>g`)
+- `s` - Git file explorer
+- `l` - Git log
+- `c` + `o/t/q` - Merge conflict helpers
+
+**Buffer** (`<leader>b`)
+- `d` - Close buffer
+- `n` - Next buffer
+
+**Git Hunks** (`<leader>h`)
+- `p` - Preview hunk
+- `[c` / `]c` - Navigate hunks
+
+**Diagnostics**
+- `[d` / `]d` - Previous/next diagnostic
+- `<leader>e` - Show diagnostic
+- `<leader>q` - Diagnostics list
+
+**Other**
+- `-` - Open parent directory (oil)
+- `<leader>f` - Format buffer
+- `<leader>v` - File explorer
+- `<C-f>` - Open tmux-sessionizer
+
+## Project Structure
+
+```
+lua/
+├── config/          # Core Neovim configuration
+│   ├── init.lua     # Settings and options
+│   ├── keymaps.lua  # All custom keybindings
+│   ├── autocmds.lua # Autocommands
+│   └── lazy.lua     # Plugin manager setup
+├── plugins/         # Plugin configurations (modular)
+│   ├── ai/          # AI integration
+│   ├── core/        # LSP, completion, treesitter, telescope
+│   ├── ui/          # Colorscheme, statusline, icons
+│   ├── git/         # Git integration
+│   ├── editor/      # File management, commenting, keymaps
+│   └── optional/    # Autoformat, debugging (toggleable)
+└── utils/           # Helper functions
+```
+
+## Customization
+
+### Adding Plugins
+
+Create a new file in `lua/plugins/` with the plugin spec:
 
 ```lua
--- File: lua/custom/plugins/autopairs.lua
-
+-- lua/plugins/myplugin.lua
 return {
-  "windwp/nvim-autopairs",
-  -- Optional dependency
-  dependencies = { 'hrsh7th/nvim-cmp' },
+  "author/plugin-name",
   config = function()
-    require("nvim-autopairs").setup {}
-    -- If you want to automatically add `(` after selecting a function or method
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on(
-      'confirm_done',
-      cmp_autopairs.on_confirm_done()
-    )
+    require("plugin-name").setup({})
   end,
 }
 ```
 
+The plugin will auto-load via lazy.nvim.
 
-This will automatically install [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) and enable it on startup. For more information, see documentation for [lazy.nvim](https://github.com/folke/lazy.nvim).
+### Modifying Keybindings
 
-#### Example: Adding a file tree plugin
+Edit `lua/config/keymaps.lua` to add or change shortcuts. See which-key integration for discoverability.
 
-In the file: `lua/custom/plugins/filetree.lua`, add:
+### Changing Language Server Settings
 
-```lua
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+Edit `lua/plugins/core/lsp.lua` to add servers or modify configurations.
 
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  version = "*",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-  },
-  config = function ()
-    require('neo-tree').setup {}
-  end,
-}
-```
+### Enabling Optional Features
 
-This will install the tree plugin and add the command `:Neotree` for you. You can explore the documentation at [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) for more information.
+**Autoformatting**: Toggle with `:KickstartFormatToggle` or enable in `lua/plugins/optional/autoformat.lua`
 
-### Contribution
+**Debugging**: Enable in `lua/plugins/optional/debug.lua` for Go debugging with DAP
 
-Pull-requests are welcome. The goal of this repo is not to create a Neovim configuration framework, but to offer a starting template that shows, by example, available features in Neovim. Some things that will not be included:
+## Installed Plugins (33 total)
 
-* Custom language server configuration (null-ls templates)
-* Theming beyond a default colorscheme necessary for LSP highlight groups
+### Essential
+- nvim-lspconfig, mason, nvim-cmp, nvim-treesitter
+- telescope, plenary
+- lualine, gruvbox, nvim-web-devicons, snacks
 
-Each PR, especially those which increase the line count, should have a description as to why the PR is necessary.
+### Git & VCS
+- vim-fugitive, vim-rhubarb, gitsigns, vim-flog, git-conflict
 
-### FAQ
+### Editor Tools
+- comment.nvim, oil.nvim, which-key.nvim
 
-* What should I do if I already have a pre-existing neovim configuration?
-  * You should back it up, then delete all files associated with it.
-  * This includes your existing init.lua and the neovim files in `~/.local` which can be deleted with `rm -rf ~/.local/share/nvim/`
-  * You may also want to look at the [migration guide for lazy.nvim](https://github.com/folke/lazy.nvim#-migration-guide)
-* What if I want to "uninstall" this configuration:
-  * See [lazy.nvim uninstall](https://github.com/folke/lazy.nvim#-uninstalling) information
-* Are there any cool videos about this plugin?
-  * Current iteration of kickstart (coming soon)
-  * Here is one about the previous iteration of kickstart: [video introduction to Kickstart.nvim](https://youtu.be/stqUbv-5u2s). Note the install via init.lua no longer works as specified. Please follow the install instructions in this file instead as they're up to date.
+### LSP & Completion
+- LuaSnip, friendly-snippets, cmp-nvim-lsp, neodev
 
-### Windows Installation
+### Markdown & Documentation
+- render-markdown.nvim (markdown rendering)
 
-Installation may require installing build tools, and updating the run command for `telescope-fzf-native`
+### Optional (Debugging)
+- nvim-dap, nvim-dap-ui, mason-nvim-dap
 
-See `telescope-fzf-native` documentation for [more details](https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation)
+### Specialized
+- sidekick.nvim (AI), vim-sleuth (indentation)
 
-This requires:
+## Tips & Best Practices
 
-- Install CMake, and the Microsoft C++ Build Tools on Windows
+- **Use which-key**: Press `<leader>` and wait a moment to see all available commands
+- **Search first**: Use `<leader>s` to find files/text rather than manual navigation
+- **LSP navigation**: `gd`, `gr`, `gI` are faster than grep for code navigation
+- **Git hunks**: Use `[c`/`]c` to review changes before staging
+- **Oil.nvim**: Press `-` to open parent directory, edit like a normal buffer
 
-```lua
-{'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-```
+## Troubleshooting
 
+**Plugins not installing?**
+- Run `:Lazy` and check for errors
+- Ensure ripgrep is installed (`rg --version`)
+
+**LSP not working?**
+- Run `:Mason` and install servers for your languages
+- Check `:LspInfo` to confirm servers are loaded
+
+**Treesitter parse errors?**
+- Run `:TSInstall <language>` to install language support
+
+**Search not working?**
+- Ensure ripgrep is installed: `brew install ripgrep`
+
+## Configuration Philosophy
+
+This configuration follows these principles:
+
+1. **Productivity first** - Fast, mnemonic keybindings
+2. **Convention over configuration** - Sensible defaults, minimal setup
+3. **Modern tooling** - LSP, Treesitter, async completion
+4. **Vim philosophy** - Respects traditional vim patterns
+5. **Extensible** - Easy to customize without major refactoring
+6. **Clean code** - Well-organized, documented structure
+
+## License
+
+Based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+
+## Resources
+
+- [Neovim documentation](https://neovim.io/doc/)
+- [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+- [Lazy.nvim](https://github.com/folke/lazy.nvim)
+- [LSP Guide](https://neovim.io/doc/user/lsp.html)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)

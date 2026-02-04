@@ -2,6 +2,9 @@
 -- This file serves as the entry point for all plugin configurations
 
 return {
+  -- AI (auto complete and agents)
+  require('plugins.ai.sidekick'),
+
   -- Core plugins (essential functionality)
   require('plugins.core.lsp'),
   require('plugins.core.completion'),
@@ -11,7 +14,9 @@ return {
   -- UI plugins (appearance and interface)
   require('plugins.ui.colorscheme'),
   require('plugins.ui.statusline'),
-  require('plugins.ui.indent'),
+  require('plugins.ui.icons'),
+  require('plugins.ui.snacks'),
+  require('plugins.ui.markdown'),
 
   -- Git plugins (version control)
   require('plugins.git.gitsigns'),
