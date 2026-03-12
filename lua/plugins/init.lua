@@ -3,7 +3,6 @@
 
 return {
   -- AI (auto complete and agents)
-  require('plugins.ai.sidekick'),
 
   -- Core plugins (essential functionality)
   require('plugins.core.lsp'),
@@ -17,6 +16,7 @@ return {
   require('plugins.ui.icons'),
   require('plugins.ui.snacks'),
   require('plugins.ui.markdown'),
+  require('plugins.ui.cursor'),
 
   -- Git plugins (version control)
   require('plugins.git.gitsigns'),

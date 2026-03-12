@@ -96,8 +96,11 @@ return {
       settings = {
         Lua = {
           diagnostics = { globals = {"vim"}},
-          workspace = {checkThirdParty = false },
           telemetry = { enable = false},
+          workspace = {
+            library = { vim.fn.stdpath("data") .. "/lazy/snacks.nvim/lua" },
+            checkThirdParty = false,
+          }
         }
       },
     })
