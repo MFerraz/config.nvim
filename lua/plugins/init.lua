@@ -3,6 +3,7 @@
 
 return {
   -- AI (auto complete and agents)
+  require('plugins.ai.opencode'),
 
   -- Core plugins (essential functionality)
   require('plugins.core.lsp'),

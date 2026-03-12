@@ -22,6 +22,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Paste without losing register
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = '[P]aste and keep register' })
+-- Paste form system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = '[P]ast from system clipboard' })
 -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = '[Y]ank to system clipboard' })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = '[Y]ank to system clipboard' })

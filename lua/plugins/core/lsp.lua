@@ -98,7 +98,10 @@ return {
           diagnostics = { globals = {"vim"}},
           telemetry = { enable = false},
           workspace = {
-            library = { vim.fn.stdpath("data") .. "/lazy/snacks.nvim/lua" },
+            library = {
+              vim.fn.stdpath("data") .. "/lazy/snacks.nvim/lua",
+              vim.fn.stdpath("data") .. "/lazy/opencode.nvim/lua",
+            },
             checkThirdParty = false,
           }
         }
