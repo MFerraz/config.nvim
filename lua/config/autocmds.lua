@@ -8,3 +8,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- Highlight color codes in every file tipe with colorize
+require('colorizer').setup()

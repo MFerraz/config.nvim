@@ -1,4 +1,3 @@
--- Autocompletion
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
@@ -6,11 +5,16 @@ return {
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
 
-    -- Adds LSP completion capabilities
+    -- Adds completion capabilities
     'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
 
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
+
+    -- Adds icons for completion kinds
+    'onsails/lspkind.nvim',
   },
   config = function()
     -- See `:help cmp`
@@ -19,7 +23,37 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
 
+    vim.api.nvim_set_hl(0, 'CmpBorder', { fg = '#665c54', bg = '#1d2021' })
+    vim.api.nvim_set_hl(0, 'CmpDocBorder', { fg = '#665c54', bg = '#1d2021' })
+    vim.api.nvim_set_hl(0, 'CmpPmenu', { bg = '#1d2021' })
+    vim.api.nvim_set_hl(0, 'CmpDoc', { bg = '#1d2021' })
+    vim.api.nvim_set_hl(0, 'CmpCursor', { bg = '#000000' })
+
     cmp.setup {
+      window = {
+        completion = cmp.config.window.bordered {
+          border = 'rounded',
+          side_padding = 0,
+          col_offset = 0,
+          winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:CmpCursor,Search:None',
+        },
+        documentation = cmp.config.window.bordered {
+          border = 'rounded',
+          winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDocBorder,Search:None',
+        },
+      },
+      formatting = {
+        fields = { 'abbr', 'icon', 'menu' },
+        format = require('lspkind').cmp_format {
+          mode = 'symbol',
+          maxwidth = 50,
+          ellipsis_char = '...',
+          before = function(_, vim_item)
+            -- vim_item.abbr = " " .. vim_item.abbr .. "  "
+            return vim_item
+          end,
+        },
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)

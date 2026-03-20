@@ -17,7 +17,9 @@ return {
   require('plugins.ui.icons'),
   require('plugins.ui.snacks'),
   require('plugins.ui.markdown'),
-  require('plugins.ui.cursor'),
+  require('plugins.ui.dadbodgrip'), 
+  require('plugins.ui.noice'),
+  require('plugins.ui.colorize'),
 
   -- Git plugins (version control)
   require('plugins.git.gitsigns'),
