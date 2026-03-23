@@ -53,9 +53,9 @@ return {
     vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
     -- document existing key chains
-    require('which-key').add({
-      { '<leader>s',  group = '[S]earch' },
+    require('which-key').add {
+      { '<leader>s', group = '[S]earch' },
       { '<leader>s_', hidden = true },
-    })
+    }
   end,
 }

@@ -58,15 +58,14 @@ return {
     end
 
     -- document existing key chains
-    require('which-key').add({
-      { '<leader>c',  group = '[C]ode' },
+    require('which-key').add {
+      { '<leader>c', group = '[C]ode' },
       { '<leader>c_', hidden = true },
-      { '<leader>r',  group = '[R]ename' },
+      { '<leader>r', group = '[R]ename' },
       { '<leader>r_', hidden = true },
-      { '<leader>w',  group = '[W]orkspace' },
+      { '<leader>w', group = '[W]orkspace' },
       { '<leader>w_', hidden = true },
-    })
-
+    }
 
     -- Setup neovim lua configuration
     require('neodev').setup()
@@ -95,23 +94,23 @@ return {
       on_attach = on_attach,
       settings = {
         Lua = {
-          diagnostics = { globals = {"vim"}},
-          telemetry = { enable = false},
+          diagnostics = { globals = { 'vim' } },
+          telemetry = { enable = false },
           workspace = {
             library = {
-              vim.fn.stdpath("data") .. "/lazy/snacks.nvim/lua",
-              vim.fn.stdpath("data") .. "/lazy/opencode.nvim/lua",
-              vim.fn.stdpath("data") .. "/lazy/nvim-cmp/lua"
+              vim.fn.stdpath 'data' .. '/lazy/snacks.nvim/lua',
+              vim.fn.stdpath 'data' .. '/lazy/opencode.nvim/lua',
+              vim.fn.stdpath 'data' .. '/lazy/nvim-cmp/lua',
             },
             checkThirdParty = false,
-          }
-        }
+          },
+        },
       },
     })
 
-    require("mason").setup()
-    require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls" },
+    require('mason').setup()
+    require('mason-lspconfig').setup {
+      ensure_installed = { 'lua_ls' },
     }
 
     -- Diagnostic keymaps

@@ -48,7 +48,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 
 -- Set colorscheme
-vim.o.background = "dark"
+vim.o.background = 'dark'
 
 -- Make numbers relative
 vim.wo.rnu = true

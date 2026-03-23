@@ -5,7 +5,7 @@ return {
   -- See `:help lualine.txt`
   opts = {
     options = {
-      theme = "gruvbox",
+      theme = 'gruvbox',
       icons_enabled = false,
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
