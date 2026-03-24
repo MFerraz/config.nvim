@@ -32,10 +32,11 @@ return {
   require 'plugins.editor.vim-sleuth',
 
   -- Apps (additional functionality)
-  require 'plugins.editor.oil', -- File manager
-  require 'plugins.ui.dadbodgrip', -- Database viewer
+  require 'plugins.apps.oil', -- File manager
+  require 'plugins.apps.dadbodgrip', -- Database viewer
 
   -- Optional plugins (can be commented out)
-  -- require('plugins.optional.debug'),
-  -- require('plugins.optional.autoformat'),
+  -- require('plugins.optional.debug'), -- Debugging
+  -- require('plugins.optional.autoformat'), -- Code formatting
+  -- require('plugins.optional.cursor'), -- Cursor movement animation
 }
