@@ -8,7 +8,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- LSP
 -- Format file
-vim.keymap.set('n', '<leader>f', ':Format<CR>', { desc = '[F]ormat' })
+vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = '[F]ormat' })
+-- Code actions
+-- See `:help vim.lsp.buf.code_action`
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 
 -- QoL
 -- Keep cursor at center of screen
@@ -47,9 +51,6 @@ require('which-key').add {
 }
 vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = '[B]uffer [D]etach' })
 vim.keymap.set('n', '<leader>bn', ':bn<CR>', { desc = '[B]uffer [N]ext' })
-
--- Files
-vim.keymap.set('n', '<leader>v', ':Neotree<CR>', { desc = '[V] Open tree explorer' })
 
 -- Git
 require('which-key').add {
